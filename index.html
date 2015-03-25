@@ -1,22 +1,28 @@
 ---
 layout: simple
 ---
-
-<div class="grid">
-  <div class="table-head">
+<div class="intro-vertical">
+  <div class="intro-head">
     Jeff Backus
   </div>
-  <div class="table-icon">
-    <a href="{{ "/about/" | prepend: site.baseurl }}">A</a>
-  </div>
-  <div class="table-text">
-    <a href="{{ "/about/" | prepend: site.baseurl }}">About</a>
-  </div>
-
-  <div class="table-icon">
-    <a href="{{ "/blog/" | prepend: site.baseurl }}">B</a>
-  </div>
-  <div class="table-text">
-    <a href="{{ "/blog/" | prepend: site.baseurl }}">Blog</a>
-  </div>
+  <ul class="social-media-list">
+    <li>
+      <a href="{{ "/about/" | prepend: site.baseurl }}">
+	<span class="intro-table-icon">
+	  <svg viewBox="0 0 32 32">
+	    <circle cx="16" cy="16" r="13" stroke="#202020" fill="#D0D0D0" />
+	  </svg>
+	</span>
+	<span class="intro-table-text">About</span>
+      </a>
+    <li>
+      <a href="{{ "/blog/" | prepend: site.baseurl }}">
+	<span class="intro-table-icon">
+	  <svg viewBox="0 0 32 32">
+	    <circle cx="16" cy="16" r="13" stroke="#202020" fill="#D0D0D0" />
+	  </svg>
+	</span>
+	<span class="intro-table-text">Blog</span>
+      </a>
+  </ul>
 </div>

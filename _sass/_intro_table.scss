@@ -1,13 +1,12 @@
 /**
  * Intro table
  */
-.intro-grid {
-  &:after {
-    /* Or @extend clearfix */
-    content: "";
-    display: table;
-    clear: both;
-  }
+.intro-vertical {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
 }
 .intro-head {
     font-size: 32px;
@@ -18,19 +17,19 @@
 }
 
 .intro-table-icon {
-    float: right;
-    font-size: 26px;
+    > svg {
+        display: inline-block;
+        width: 16px;
+        height: 16px;
+        vertical-align: middle;
 
-    @include media-query($on-laptop) {
-      font-size: 22px;
+        path {
+            fill: $grey-color;
+        }
     }
 }
 
 .intro-table-text {
-    float: left;
     font-size: 26px;
-
-    @include media-query($on-laptop) {
-      font-size: 22px;
-    }
+    vertical-align: middle;
 }
