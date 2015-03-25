@@ -1,0 +1,36 @@
+/**
+ * Intro table
+ */
+.intro-grid {
+  &:after {
+    /* Or @extend clearfix */
+    content: "";
+    display: table;
+    clear: both;
+  }
+}
+.intro-head {
+    font-size: 32px;
+    
+    @include media-query($on-laptop) {
+      font-size: 28px;
+    }
+}
+
+.intro-table-icon {
+    float: right;
+    font-size: 26px;
+
+    @include media-query($on-laptop) {
+      font-size: 22px;
+    }
+}
+
+.intro-table-text {
+    float: left;
+    font-size: 26px;
+
+    @include media-query($on-laptop) {
+      font-size: 22px;
+    }
+}
