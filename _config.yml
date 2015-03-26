@@ -1,8 +1,8 @@
 # Site settings
-title: Jeff Backus
+title: The Ramblings of Jeff Backus
 email: jeff@jsbackus.com
 description: > # this means to ignore newlines until "baseurl:"
-  Open Source and Other Tech Odds and Ends
+  On Open Source and Other Tech Odds and Ends
 baseurl: "" # the subpath of your site, e.g. /blog/
 url: "http://jsbackus.com" # the base hostname & protocol for your site
 github_username:  jsbackus
