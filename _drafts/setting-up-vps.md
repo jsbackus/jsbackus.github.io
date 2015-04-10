@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "Setting Up Your VPS"
-date:   2015-03-31 20:34:00
+date:   2015-04-09 23:31:00
 categories: VPS
 ---
 Last time we talked about how a VPN can help protect our data and our privacy 
@@ -37,28 +37,144 @@ a flat rate for the month, unlike their larger servers which are billed only
 when they are provisioned (i.e. "up") on a per-second basis.
 
 So, in today's post we'll go through setting and securing our "baby server", 
-leaving the details of actually setting up the VPN for a later post. Before
-getting started, however, we need to make sure we have the necessary software.
-For this step, we mainly need the SSH client and a key generator. For those on
-Linux or OS X systems, these should be installed by default. You can verify
-that they are installed by opening up a terminal and typing the following:
-{% highlight ruby %}
-which ssh
-which ssh-keygen
+leaving the details of actually setting up the VPN for a later post. The
+following steps utilize the command line and are Linux-centric, but the process
+is very similar for those on Windows systems using 
+[Cygwin](http://www.cygwin.org/) or [Putty](http://www.putty.org/). 
+
+### Generating Your SSH Key ###
+
+The first thing to do, before actually creating our VPS, is to generate a SSH
+authentication keys that we will use to log onto the machine, which is a 
+significantly more secure method of logging into a remote machine than standard 
+passwords - particularly if you protect your key with a passphrase. This is for
+a couple of reasons: A) keys are significantly more difficult to crack with
+brute-force due to their larger size and random composition, and B) keys allow
+you to authenticate over a network without ever sending your password over
+the network where an eavesdropper can intercept it - even if you protect your
+key with a passphrase. A good write-up on SSH keys can be found
+[here](https://wiki.archlinux.org/index.php/SSH_keys).
+
+To generate our private/public key pair, use the following command:
+{% highlight bash %}
+ssh-keygen -t rsa -b 4096 -f ~/.ssh/id_rsa.my_vpn
+{% endhighlight %}
+You will be prompted for an optional passphrase. If you specify a passphrase,
+you will be prompted to re-enter this phrase every time you attempt to use the
+key. If you want to be able to log in without specifying a passphrase, leave 
+this blank.
+
+This will generate two files:
+
+* ~/.ssh/id_rsa.my_vpn - Your private key. Keep this secret and back it up!
+* ~/.ssh/id_rsa.my_vpn.pub - Your public key. Back it up! The contents of this
+  file will get transferred to all machines you wish to use this key to log in
+   to.
+
+### Generate a New Root Password ###
+
+Next, we want to take a moment to come up with a unique password to use as the
+root password. Yes, I know we just generated a key so that we never have to 
+actually enter the root password, but we still need to set one. So, pick a 
+password that is reasonably secure. Optionally, you can generate a completely
+random one and store it in a password manager, such as
+(keepassx)[https://www.keepassx.org/].
+
+### Acquire Your VPS ###
+
+Alright, now to actually acquire a VPS. Navigate to <https://www.atlantic.net>
+and click "Create a Server", if you don't already have an account. If you 
+already have an account, then log into your account, and click "Add Server" 
+under the "Manage Servers" header on the left. You'll be prompted for the
+following:
+
+* Server Name - Choose whatever you want. For our purposes it is simply used to
+  ID your server in the user panel.
+* Location - Choose a geographical location closest to where you will be using
+  this the most (i.e. city you live in).
+* Select OS - I'll be referring to a Fedora install, but the principles should
+  be the same for Ubuntu, Debian, or Centos. There is no real advantage to pick
+  32bit over 64bit.
+* Plan - Pick GO (verify the cost!)
+* Enable backups - If you want, but its cheaper to use rsync to backup your 
+  VPS to your home machine.
+
+After you hit continue you will be asked for your name and billing and contact
+info. You know the drill. And yes, be honest. After you complete the account
+creation and e-mail verification process, Atlantic.net will e-mail you the IP
+address and password for your server. Once you receive this e-mail, immediately
+SSH into your box as root:
+{% highlight bash %}
+ssh root@<IP ADDRESS OF VPS>
+{% endhighlight %}
+Once logged in, you will be asked to change the password. Enter the password
+you came up with above.
+
+### Installing Your SSH Key ###
+
+Now it is time to install your SSH key so that you can use it to log in instead
+of using the root password. To do so, on your home machine (where you generated
+the keys), open a new terminal and type the following:
+{% highlight bash %}
+cat ~/.ssh/id_rsa.my_vpn.pub | ssh root@<IP ADDRESS OF VPS> 'cat >> ~/.ssh/authorized_keys'
+{% endhighlight %}
+You will be prompted for the root password again, go ahead and enter it.
+
+In your terminal that is still logged into your VPS as root, type:
+{% highlight bash %}
+chmod 600 ~/.ssh/authorized_keys
+{% endhighlight %}
+This is necessary for newer versions of SSH that have strict rules regarding 
+authorized_keys's file permissions as a safety measure.
+
+### Install Nano ###
+By default, the only text editor installed is vi. 
+For those that are not comfortable with vi, install the text editor nano:
+{% highlight bash %}
+yum install -y nano
 {% endhighlight %}
 
-For those on a Windows system, you will need to download 
-[putty](http://www.putty.org/). I would go ahead and grab the installer 
-that contains everything. You will definitely need putty.exe and puttygen.exe
-for this part, and later you'll need pscp.exe of psftp.exe as well.
+From here on out, replace references to vi with nano.
 
-dd
+### Disabling SSH Login Passwords ###
 
-todo:
+Lastly, we want to disable logging in with passwords in order to prevent
+an attacker from brute-forcing the password. Absolutely *DO NOT* log out
+until we verify that you can properly log in after completing this step.
 
-* atlantic.net
-* SSH: 
-  * enable keys w/ passwords
-  * disable passwords
-  * Windows:
-    * [putty](http://www.putty.org/)
+To disable password logins via SSH, edit the SSH daemon config file:
+{% highlight bash %}
+vi /etc/ssh/sshd_config
+{% endhighlight %}
+
+And look for the line that says:
+{% highlight bash %}
+PasswordAuthentication yes
+{% endhighlight %}
+
+Now try to log in with your certificate from your home machine:
+{% highlight bash %}
+ssh -i ~/.ssh/id_rsa.my_vpn root@<IP ADDRESS OF VPS>
+{% endhighlight %}
+
+If you were able to successfully log in, then your done. If not, go back and 
+review installing your SSH key.
+
+### Simplifying SSH Login ###
+
+An optional step is to simply the SSH login command by setting up an identity
+in the SSH user config file on your home machine. Using your favorite text 
+editor, edit the file ~/.ssh/config (creating if necessary) and add the
+following:
+{% highlight bash %}
+HOST vpn
+     Hostname <IP ADDRESS OF VPS>
+     IdentityFile ~/.ssh/id_rsa.my_vpn
+     IdentitiesOnly yes
+{% endhighlight %}
+
+### Fini! ###
+
+Congratulations! You've now set up your own VPS and secured it against 
+brute-force password attacks. Next time we'll get to the main event - setting
+up our own VPN to protect our internet traffic from prying eyes.
