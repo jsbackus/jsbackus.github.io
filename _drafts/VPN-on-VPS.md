@@ -268,6 +268,15 @@ todo:
   * iOS
     * <https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-ios-faq.html>
     * <https://itunes.apple.com/us/app/openvpn-connect/id590379981?mt=8>
+    * Need to transfer .ovpn and ca.crt to phone via iTunes: <http://louwrentius.com/setup-a-vpn-on-your-iphone-with-openvpn-and-linux.html>
+    * Need to transfer pkcs12 file to phone via e-mail (BAD!) or web server:
+      * Set up a simple web server on local network to serve file
+      * You MUST set an export password when openssl asks.
+      * iOS won't be able to verify authenticity - that is ok, this is a self-signed cert.
+    * In OpenVPN client:
+      * Select .ovpn profile
+      * Select .p12 file
+    * Reboot phone before attempting to connect, otherwise OpenVPN can't even make basic connection.
   * Android
     * <https://play.google.com/store/apps/details?id=net.openvpn.openvpn&hl=en>
     * <https://docs.openvpn.net/docs/openvpn-connect/openvpn-connect-android-faq.html>
