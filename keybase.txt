@@ -1,0 +1,67 @@
+==================================================================
+https://keybase.io/jsbackus
+--------------------------------------------------------------------
+
+I hereby claim:
+
+  * I am an admin of http://jsbackus.com
+  * I am jsbackus (https://keybase.io/jsbackus) on keybase.
+  * I have a public key with fingerprint 3EA6 3E84 0D49 1518 B19B  041A DF72 B7CB 2B1A 5ED6
+
+To do so, I am signing this object:
+
+{
+    "body": {
+        "key": {
+            "eldest_kid": "0101e13ab2e963f3420d1624a3853fe594499aaddb6f235a157867b536f3d25e36920a",
+            "fingerprint": "3ea63e840d491518b19b041adf72b7cb2b1a5ed6",
+            "host": "keybase.io",
+            "key_id": "df72b7cb2b1a5ed6",
+            "kid": "0101e13ab2e963f3420d1624a3853fe594499aaddb6f235a157867b536f3d25e36920a",
+            "uid": "4a7b4c3cc4172c2d046fa62f3e216c19",
+            "username": "jsbackus"
+        },
+        "service": {
+            "hostname": "jsbackus.com",
+            "protocol": "http:"
+        },
+        "type": "web_service_binding",
+        "version": 1
+    },
+    "ctime": 1456445324,
+    "expire_in": 157680000,
+    "prev": "8a52aeec64edbd964b3210bf28e0986a44df20683a3022648b1df71f8d6a318a",
+    "seqno": 7,
+    "tag": "signature"
+}
+
+which yields the signature:
+
+-----BEGIN PGP MESSAGE-----
+Version: GnuPG v1
+
+owGtUltIFUEYPkfNUsiCfCgNtM2iVGznsnN2z4tUJ8gKIinLKLeZ3dnjejl7Ons0
+TSQptQsFXaQIihBBsoygm92QfKkHA4VIsMKKyrCQkKSHLtas1Ev02LwM88/3ff83
+3/zHZyf6EvwvYz39eRllQ/7+MeYrGThzvEFijlkvBRukSj698SqTu3G90jaloCQD
+GXCAKINcI8hCGMomIBBTpCrI4oqGsaZRapqMWBApFCgBlQSYgoiFTKhwRDQoUylf
+suxImMeiMTsSF7KIU4K4imUTa0ABKgMakzGgphWALGAwyABVuEkEsdxxPYYwx6jL
+C2xH1MRBn7b3D/x/9l0zLYdpgGEDGQYGAWhAU8bEogRaiENADKB5QJfHIrSaC3SF
+y6hRWeNKjfmSqNbaBveC9V7yF6LAcKoFNxpz4o7hVImb8ng8GvSI8fqoh9zDmf5b
+Q2d2xBQxCkItj7m2E5GCQCCNuO2JAqwQjBUEcb7E66J2jOu2h1ACRJXF8trwWiGp
+UgVSzo2tBHOTmRrBDEEgMwuqXNZUQjE2LSgTFVEkQ0iw+B4RNLBUk1AEVC8Wl++O
+OFIwIHzSsNB07XCExmtiXGpMPexfmOTzJ/iSZyR4A+ZLTZn7Z+r01zOn8ng9SYTl
+/U1L+YdmOdLae7Lwpm4tyJhseJp1vv3oZHNX4+FSbXJq0fu9O9MmHgx219eOZ+7b
+flMZ/Yjud67bdrV7Xf6upm/DIz1r+u9dCm1eG95R3LY8b8bMTrmvbt6FlUuu92Te
+/q64LLsv/WxO8dxlocnrp79Ulwye+FqWdXng1Kcjq3pXL752cWKoux0UPFpasuT2
+sY2NY4XoXag0N7387Ku1zzeVHijq0p4k5azoyJ01suXumsfpae7bplXF471zWpKv
+DN95Eb7hb8t7WJDd+qaq4+D5Z74suLgntH5+c2rKWHFdxcbR0Mq2z4fOHdlwSy/S
+adqm9e0/W5IH9tMfA13VvwA=
+=YSWr
+-----END PGP MESSAGE-----
+
+And finally, I am proving ownership of this host by posting or
+appending to this document.
+
+View my publicly-auditable identity here: https://keybase.io/jsbackus
+
+==================================================================
