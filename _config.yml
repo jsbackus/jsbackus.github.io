@@ -9,4 +9,4 @@ github_username:  jsbackus
 
 # Build settings
 markdown: kramdown
-highlighter: pygments
+highlighter: rouge
