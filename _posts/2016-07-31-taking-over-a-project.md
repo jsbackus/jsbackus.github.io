@@ -33,8 +33,8 @@ the origin of 70+ forks. When you delete a repo, it all goes.
 This just goes
 to show how important it is that Fedora maintains source RPMs as well as the
 binary ones. It also goes to show how important it is to maintain your own
-repo of any projects you deem critical. Luckily, Git makes that ridiculously
-easy and GitHub makes it easy for the code and for the wiki. However, for
+repo of any projects you deem critical. Luckily, Git makes doing so ridiculously
+easy and GitHub makes it easy to do so for the code and for the wiki. However, for
 the issues you are SOL.
 
 Believe it or not, the torching of a moderately popular project isn't the
@@ -53,13 +53,14 @@ with all but two commits.
 ... And then the ridiculous happened. One individual was able to resurrect
 those two commits by downloading the patches using the URLs in the developer's
 activity stream. ... And then someone else was able to track down a cached
-version of the wiki before it was purged from Google and/or GitHub.
+version of the wiki before it was purged.
 
 And there we were - a completely resurrected repository and wiki, all because
 of the efforts of a community that was heartbroken because a program they
 used frequently had disappeared.
 
-And thus, we soldiered on. I'm proud to say that we just released our first
+And thus, we soldiered on. I'm proud to say that we just
+[released](https://github.com/AntiMicro/antimicro/releases) our first
 official version as an organization. It includes a few bug fixes and updated
 links, but, hey, it is a start.
 
@@ -67,11 +68,11 @@ This is why open source is so awesome. When a
 closed source developer decides "Fine. Screw it. We're moving on," there is
 little that the community can do but send e-mail upon e-mail to an already
 haggard worker-bee, who inevitably ships those e-mails off to the junk
-folder. *But* with open source, a community can rise up out of the rubble
+folder. But with open source, a community can rise up out of the rubble
 of an abandoned program and thrive.
 
 Assuming, someone else kept the source that is. So, the moral of the story
-is keep copies of all the materials you can. Be it code, wiki pages, or even
+is: keep copies of all the materials you can. Be it code, wiki pages, or even
 the issue-related e-mail stream.
 
 Happy Hacking!
