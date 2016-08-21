@@ -10,3 +10,7 @@ github_username:  jsbackus
 # Build settings
 markdown: kramdown
 highlighter: rouge
+
+gems:
+  - jemoji
+  
